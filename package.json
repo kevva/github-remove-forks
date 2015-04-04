@@ -1,0 +1,43 @@
+{
+  "name": "github-remove-forks",
+  "version": "1.0.0",
+  "description": "Remove all forked repositories",
+  "license": "MIT",
+  "repository": "kevva/github-remove-forks",
+  "author": {
+    "name": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "https://github.com/kevva"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bin": {
+    "github-remove-forks": "cli.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
+  "keywords": [
+    "api",
+    "cli",
+    "forks",
+    "github",
+    "repo",
+    "repository"
+  ],
+  "dependencies": {
+    "each-async": "^1.1.1",
+    "github-repositories": "^1.1.2",
+    "github-token-user": "^1.1.0",
+    "got": "^2.6.0",
+    "meow": "^3.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.0.4"
+  }
+}
