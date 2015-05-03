@@ -1,4 +1,4 @@
-# github-remove-forks [![Build Status](http://img.shields.io/travis/kevva/github-remove-forks.svg?style=flat)](https://travis-ci.org/kevva/github-remove-forks)
+# github-remove-forks [![Build Status](https://travis-ci.org/kevva/github-remove-forks.svg?branch=master)](https://travis-ci.org/kevva/github-remove-forks)
 
 > Remove all forked repositories
 
