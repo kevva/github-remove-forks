@@ -3,10 +3,10 @@
 var eachAsync = require('each-async');
 var githubRepos = require('github-repositories');
 var githubTokenUser = require('github-token-user');
-var got = require('got');
+var got = require('gh-got');
 
 function deleteRepo(repo, opts, cb) {
-	var url = 'https://api.github.com/repos/' + repo;
+	var url = 'repos/' + repo;
 
 	got.delete(url, {headers: opts.headers}, function (err) {
 		if (err) {
@@ -39,9 +39,7 @@ module.exports = function (opts, cb) {
 	}
 
 	opts.headers = {
-		Accept: 'application/vnd.github.v3+json',
-		Authorization: 'token ' + opts.token,
-		'User-Agent': 'https://github.com/kevva/github-remove-forks'
+		Authorization: 'token ' + opts.token
 	};
 
 	githubTokenUser(opts.token, function (err, data) {
