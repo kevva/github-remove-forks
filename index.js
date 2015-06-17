@@ -1,5 +1,4 @@
 'use strict';
-
 var eachAsync = require('each-async');
 var githubRepos = require('github-repositories');
 var githubTokenUser = require('github-token-user');
