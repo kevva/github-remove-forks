@@ -11,7 +11,7 @@ var cli = meow({
 		'Options',
 		'  -t, --token      Github token to authenticate with',
 		'  -v, --verbose    Show detailed output'
-	].join('\n')
+	]
 }, {
 	boolean: ['verbose'],
 	string: ['token'],
