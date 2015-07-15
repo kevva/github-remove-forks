@@ -61,6 +61,11 @@ $ github-remove-forks --help
 ```
 
 
+## Related
+
+- [github-remove-all-releases](https://github.com/stevemao/github-remove-all-releases) - Remove all releases of a GitHub repo
+
+
 ## License
 
 MIT © [Kevin Mårtensson](https://github.com/kevva)
