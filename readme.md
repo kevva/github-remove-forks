@@ -13,9 +13,9 @@ $ npm install --save github-remove-forks
 ## Usage
 
 ```js
-var githubRemoveForks = require('github-remove-forks');
+const githubRemoveForks = require('github-remove-forks');
 
-githubRemoveForks({token: '523ef691191'}, function (err, data) {
+githubRemoveForks({token: '523ef691191'}).then(data => {
 	console.log('Successfully remove all forked repositories');
 });
 ```
@@ -23,24 +23,18 @@ githubRemoveForks({token: '523ef691191'}, function (err, data) {
 
 ## API
 
-### githubRemoveForks(options, callback)
+### githubRemoveForks(options)
 
-#### options.token
+Returns a promise for an `array` with the removed repositories.
+
+#### options
+
+##### token
 
 *Required*  
 Type: `string`
 
 Token to authenticate with. If you don't have a token you can generate a new one [here](https://github.com/settings/tokens/new).
-
-#### callback(err, data)
-
-Type: `function`
-
-##### data
-
-Type: `array`
-
-An array containing all removed repositories.
 
 
 ## CLI

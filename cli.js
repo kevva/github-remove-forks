@@ -26,12 +26,7 @@ if (!cli.flags.token) {
 	process.exit(1);
 }
 
-githubRemoveForks(cli.flags, function (err, data) {
-	if (err) {
-		console.error(err.message);
-		process.exit(1);
-	}
-
+githubRemoveForks(cli.flags).then(function (data) {
 	console.log('Removed ' + data.length + ' repositories');
 
 	if (cli.flags.verbose) {
