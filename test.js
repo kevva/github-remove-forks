@@ -1,8 +1,11 @@
-'use strict';
-var test = require('ava');
-var githubRemoveForks = require('./');
+import test from 'ava';
+import fn from './';
 
-test(function (t) {
-	t.assert(true);
-	t.end();
+test(async t => {
+	try {
+		await fn();
+		t.fail();
+	} catch (err) {
+		t.is(err.message, 'Token is required to authenticate with Github');
+	}
 });

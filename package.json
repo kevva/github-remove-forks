@@ -16,7 +16,7 @@
     "github-remove-forks": "cli.js"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "ava"
   },
   "files": [
     "cli.js",
@@ -38,6 +38,6 @@
     "pinkie-promise": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "^0.0.4"
+    "ava": "*"
   }
 }
