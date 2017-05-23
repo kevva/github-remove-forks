@@ -10,16 +10,12 @@
     "url": "https://github.com/kevva"
   },
   "engines": {
-    "node": ">=0.10.0"
-  },
-  "bin": {
-    "github-remove-forks": "cli.js"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
   },
   "files": [
-    "cli.js",
     "index.js"
   ],
   "keywords": [
@@ -31,19 +27,13 @@
     "repository"
   ],
   "dependencies": {
-    "gh-got": "^2.1.0",
-    "github-repositories": "2.1.1",
-    "github-token-user": "^2.0.0",
-    "meow": "^3.3.0",
-    "pinkie-promise": "^1.0.0"
+    "gh-got": "^5.0.0",
+    "github-repositories": "3.0.0",
+    "github-token-user": "^3.0.0"
   },
   "devDependencies": {
     "ava": "*",
+    "nock": "^9.0.13",
     "xo": "*"
-  },
-  "xo": {
-    "ignores": [
-      "test.js"
-    ]
   }
 }

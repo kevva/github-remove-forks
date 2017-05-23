@@ -25,34 +25,16 @@ githubRemoveForks({token: '523ef691191'}).then(data => {
 
 ### githubRemoveForks(options)
 
-Returns a promise for an `array` with the removed repositories.
+Returns a promise for an `Array` with the removed repositories.
 
 #### options
 
 ##### token
 
-*Required*  
+*Required*<br>
 Type: `string`
 
 Token to authenticate with. If you don't have a token you can generate a new one [here](https://github.com/settings/tokens/new).
-
-
-## CLI
-
-```sh
-$ npm install --global github-remove-forks
-```
-
-```sh
-$ github-remove-forks --help
-
-  Usage
-    $ github-remove-forks --token 523ef69119
-
-  Options
-    -t, --token      Github token to authenticate with
-    -v, --verbose    Show detailed output
-```
 
 
 ## Related

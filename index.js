@@ -1,33 +1,19 @@
 'use strict';
-var githubRepos = require('github-repositories');
-var githubTokenUser = require('github-token-user');
-var got = require('gh-got');
-var Promise = require('pinkie-promise');
+const ghGot = require('gh-got');
+const githubRepos = require('github-repositories');
+const githubTokenUser = require('github-token-user');
 
-module.exports = function (opts) {
+const deleteRepo = (repo, token) => ghGot.delete(`repos/${repo.full_name}`, {token}).then(() => repo);
+
+module.exports = opts => {
 	opts = opts || {};
 
 	if (!opts.token) {
 		return Promise.reject(new Error('Token is required to authenticate with Github'));
 	}
 
-	opts.headers = {
-		Authorization: 'token ' + opts.token
-	};
-
-	return githubTokenUser(opts.token).then(function (data) {
-		return githubRepos(data.login, {token: opts.token}).then(function (repos) {
-			return repos.filter(function (el) {
-				return el.fork;
-			});
-		});
-	}).then(function (repos) {
-		return Promise.all(repos.map(function (repo) {
-			var url = 'repos/' + repo.full_name;
-
-			return got.delete(url, {headers: opts.headers}).then(function () {
-				return repo;
-			});
-		}));
-	});
+	return githubTokenUser(opts.token)
+		.then(data => githubRepos(data.login, {token: opts.token}))
+		.then(data => data.filter(x => x.fork))
+		.then(data => Promise.all(data.map(x => deleteRepo(x, opts.token))));
 };
