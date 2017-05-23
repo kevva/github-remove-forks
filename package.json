@@ -31,8 +31,7 @@
     "github-branches": "^3.0.0",
     "github-repositories": "3.0.0",
     "github-token-user": "^3.0.0",
-    "p-filter": "^1.0.0",
-    "p-locate": "^2.0.0"
+    "p-filter": "^1.0.0"
   },
   "devDependencies": {
     "ava": "*",

@@ -4,7 +4,6 @@ const githubBranches = require('github-branches');
 const githubRepos = require('github-repositories');
 const githubTokenUser = require('github-token-user');
 const pFilter = require('p-filter');
-const pLocate = require('p-locate');
 
 const getDiff = (repo, base, head, token) => ghGot(`repos/${repo.parent.full_name}/compare/${base}...${head}`, {token}).then(res => res.body);
 const getRepo = (repo, token) => ghGot(`repos/${repo.full_name}`, {token}).then(res => res.body);
@@ -18,15 +17,15 @@ const isBranchSame = (repo, branch, parentBranches, token) => {
 		return true;
 	}
 
-	return pLocate(checkBranches, x => getDiff(repo, branch.commit.sha, x.name, token)
-		.then(res => res.behind_by === 0)
+	return pFilter(checkBranches, x => getDiff(repo, branch.commit.sha, x.name, token).then(data => data.behind_by === 0))
+		.then(data => data.length === 0)
 		.catch(err => {
 			if (err.code === 404) {
 				return true;
 			}
 
 			throw err;
-		}));
+		});
 };
 
 const isBranchNotUseful = (repo, token) => githubBranches(repo.full_name, {token})
@@ -35,7 +34,7 @@ const isBranchNotUseful = (repo, token) => githubBranches(repo.full_name, {token
 		const branches = data[0];
 		const parentBranches = data[1];
 
-		return branches.length <= parentBranches.length && pLocate(branches, x => isBranchSame(repo, x, parentBranches, token));
+		return branches.length <= parentBranches.length && pFilter(branches, x => isBranchSame(repo, x, parentBranches, token)).then(data.length !== 0);
 	});
 
 module.exports = opts => {
